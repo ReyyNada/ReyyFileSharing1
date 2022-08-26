@@ -51,6 +51,21 @@ class Bot(Client):
                     "\nBot Berhenti. Gabung Group https://t.me/pantekyks untuk Bantuan"
                 )
                 sys.exit()
+      try:
+            db_channel = await self.get_chat(CHANNEL_ID)
+            self.db_channel = db_channel
+            test = await self.send_message(chat_id=db_channel.id, text="Test Message")
+            await test.delete()
+        except Exception as e:
+            self.LOGGER(__name__).warning(e)
+            self.LOGGER(__name__).warning(
+                f"Pastikan Bot adalah Admin di Channel DataBase, dan Periksa kembali Nilai CHANNEL_ID, Nilai Saat Ini: {CHANNEL_ID}"
+            )
+            self.LOGGER(__name__).info(
+                "\nBot Berhenti. Gabung Group https://t.me/pantekyks untuk Bantuan"
+            )
+            sys.exit()
+
         self.set_parse_mode("html")
         self.LOGGER(__name__).info(
             f"[🔥 BERHASIL DIAKTIFKAN! 🔥]\n\nBOT Dibuat oleh @{OWNER}\nJika @{OWNER} Membutuhkan Bantuan, Silahkan Tanyakan ke https://t.me/mahadappa"
