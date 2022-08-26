@@ -51,7 +51,7 @@ class Bot(Client):
                     "\nBot Berhenti. Gabung Group https://t.me/pantekyks untuk Bantuan"
                 )
                 sys.exit()
-            try:
+        try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
             test = await self.send_message(chat_id=db_channel.id, text="Test Message")
